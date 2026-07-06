@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Toddyz Library</title>
+<title>Toddyz Library - Roblox UI Library</title>
 
 <style>
 
@@ -15,16 +16,42 @@ font-family:Arial,sans-serif;
 color:white;
 }
 
+
 header{
+position:relative;
 background:#16a34a;
 padding:45px;
 text-align:center;
+overflow:hidden;
+height:150px;
 }
+
+
+#dvd{
+position:absolute;
+left:20px;
+top:20px;
+font-size:22px;
+font-weight:bold;
+opacity:0.5;
+pointer-events:none;
+z-index:1;
+white-space:nowrap;
+}
+
+
+header h1,
+header p{
+position:relative;
+z-index:2;
+}
+
 
 header h1{
 margin:0;
 font-size:48px;
 }
+
 
 header p{
 margin-top:10px;
@@ -32,11 +59,13 @@ font-size:18px;
 color:#d1fae5;
 }
 
+
 .container{
 max-width:900px;
 margin:auto;
 padding:20px;
 }
+
 
 .card{
 background:#2a2a2a;
@@ -46,9 +75,11 @@ padding:20px;
 margin-bottom:20px;
 }
 
+
 h2{
 color:#22c55e;
 }
+
 
 pre{
 background:#111;
@@ -57,6 +88,7 @@ border-radius:8px;
 overflow:auto;
 color:#22c55e;
 }
+
 
 button{
 margin-top:10px;
@@ -67,21 +99,19 @@ padding:10px 18px;
 border-radius:8px;
 cursor:pointer;
 font-size:15px;
-transition:.2s;
 }
+
 
 button:hover{
 background:#15803d;
 }
+
 
 a{
 color:#22c55e;
 text-decoration:none;
 }
 
-a:hover{
-text-decoration:underline;
-}
 
 footer{
 text-align:center;
@@ -89,9 +119,217 @@ padding:25px;
 color:#bdbdbd;
 }
 
+
 </style>
 
+</head>
+
+
+<body>
+
+
+<header>
+
+
+<div id="dvd">
+VERSION 1
+</div>
+
+
+<h1>Toddyz Library</h1>
+
+<p>
+Biblioteca Lua para criação de interfaces no Roblox.
+</p>
+
+
+</header>
+
+
+
+<div class="container">
+
+
+<div class="card">
+
+<h2>📦 Instalação</h2>
+
+<p>Carregue a biblioteca usando:</p>
+
+<pre id="install">local ToddyzLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua"))()</pre>
+
+<button onclick="copiar(install.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>CreateWindow</h2>
+
+<pre id="window">local Window = ToddyzLibrary:CreateWindow("Meu Menu")</pre>
+
+<button onclick="copiar(window.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>CreateTab</h2>
+
+<pre id="tab">local Tab = Window:CreateTab("Principal")</pre>
+
+<button onclick="copiar(tab.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>CreateLabel</h2>
+
+<pre id="label">Tab:CreateLabel("Texto Informativo")</pre>
+
+<button onclick="copiar(label.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>CreateButton</h2>
+
+<pre id="button">Tab:CreateButton("Executar", function()
+
+print("Executado")
+
+end)</pre>
+
+<button onclick="copiar(button.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>CreateToggle</h2>
+
+<pre id="toggle">Tab:CreateToggle("Sistema", function(Estado)
+
+print(Estado)
+
+end)</pre>
+
+<button onclick="copiar(toggle.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>CreateInput</h2>
+
+<pre id="input">Tab:CreateInput("Digite algo", function(Texto)
+
+print(Texto)
+
+end)</pre>
+
+<button onclick="copiar(input.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Notify</h2>
+
+<pre id="notify">ToddyzLibrary:Notify("Olá!",3)</pre>
+
+<button onclick="copiar(notify.innerText)">
+Copiar
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Recursos</h2>
+
+<p>
+Sistema de janelas com animações.<br>
+Abas com rolagem horizontal.<br>
+Botões, toggles e inputs personalizados.<br>
+Sistema de notificações.<br>
+Suporte para dispositivos mobile.<br>
+Interface arrastável e minimizável.
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>Licença</h2>
+
+<a href="license.html">
+Ver Licença
+</a>
+
+</div>
+
+
+
+</div>
+
+
+
+
+<footer>
+
+© 2026 Toddyz Library<br>
+Desenvolvido por Toddyz
+
+</footer>
+
+
+
 <script>
+
 
 function copiar(txt){
 
@@ -101,97 +339,112 @@ alert("Código copiado!");
 
 }
 
+
+
+
+const dvd = document.getElementById("dvd");
+const header = document.querySelector("header");
+
+
+let x = 30;
+let y = 30;
+
+
+let speedX = 2;
+let speedY = 2;
+
+
+let lastColor = "";
+
+
+
+function mudarCor(){
+
+let cor;
+
+
+do{
+
+let r = Math.floor(Math.random()*256);
+let g = Math.floor(Math.random()*256);
+let b = Math.floor(Math.random()*256);
+
+
+cor = `rgb(${r},${g},${b})`;
+
+
+}while(cor === lastColor);
+
+
+lastColor = cor;
+
+dvd.style.color = cor;
+
+}
+
+
+
+
+function moverDVD(){
+
+
+let largura = header.clientWidth;
+let altura = header.clientHeight;
+
+
+
+x += speedX;
+y += speedY;
+
+
+
+let bateu = false;
+
+
+
+if(x <= 0 || x + dvd.offsetWidth >= largura){
+
+speedX *= -1;
+bateu = true;
+
+}
+
+
+
+if(y <= 0 || y + dvd.offsetHeight >= altura){
+
+speedY *= -1;
+bateu = true;
+
+}
+
+
+
+if(bateu){
+
+mudarCor();
+
+}
+
+
+
+dvd.style.transform = `translate(${x}px,${y}px)`;
+
+
+
+requestAnimationFrame(moverDVD);
+
+
+}
+
+
+
+mudarCor();
+moverDVD();
+
+
 </script>
 
-</head>
-
-<body>
-
-<header>
-
-<h1>Toddyz Library</h1>
-
-<p>Biblioteca moderna para criar interfaces no Roblox.</p>
-
-</header>
-
-<div class="container">
-
-<div class="card">
-
-<h2>📦 Instalação</h2>
-
-<p>Copie o código abaixo para começar a utilizar a Toddyz Library.</p>
-
-<pre id="install">local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua"))()</pre>
-
-<button onclick='copiar(document.getElementById("install").innerText)'>Copiar</button>
-
-</div>
-
-<div class="card">
-
-<h2>Button</h2>
-
-<pre id="button">Main:Button({
-    Text = "Olá",
-    Callback = function()
-
-    end
-})</pre>
-
-<button onclick='copiar(document.getElementById("button").innerText)'>Copiar</button>
-
-</div>
-
-<div class="card">
-
-<h2>Toggle</h2>
-
-<pre id="toggle">Main:Toggle({
-    Text = "Auto Farm",
-    Default = false,
-    Callback = function(Value)
-
-    end
-})</pre>
-
-<button onclick='copiar(document.getElementById("toggle").innerText)'>Copiar</button>
-
-</div>
-
-<div class="card">
-
-<h2>Input</h2>
-
-<pre id="input">Main:Input({
-    Text = "Nome",
-    Placeholder = "Digite...",
-    Callback = function(Text)
-
-    end
-})</pre>
-
-<button onclick='copiar(document.getElementById("input").innerText)'>Copiar</button>
-
-</div>
-
-<div class="card">
-
-<h2>Licença</h2>
-
-<a href="license.html">Ver Licença</a>
-
-</div>
-
-</div>
-
-<footer>
-
-© 2026 Toddyz Library<br>
-Desenvolvido por Toddyz
-
-</footer>
 
 </body>
 </html>
