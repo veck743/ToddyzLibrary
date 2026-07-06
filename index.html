@@ -9,7 +9,7 @@
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
-    background:#111827;
+    background:#0f172a;
     color:white;
 }
 
@@ -24,6 +24,11 @@ header h1{
     font-size:42px;
 }
 
+header p{
+    margin-top:10px;
+    color:#dbeafe;
+}
+
 .container{
     max-width:900px;
     margin:auto;
@@ -31,38 +36,30 @@ header h1{
 }
 
 .card{
-    background:#1f2937;
-    border-radius:12px;
+    background:#1e293b;
     padding:20px;
-    margin-bottom:25px;
+    border-radius:12px;
+    margin-bottom:20px;
 }
 
 h2{
     color:#60a5fa;
 }
 
-code{
-    display:block;
-    background:#0f172a;
-    color:#22c55e;
+pre{
+    background:#020617;
     padding:15px;
     border-radius:8px;
     overflow:auto;
-    margin-top:10px;
-}
-
-a{
-    color:#60a5fa;
-    text-decoration:none;
+    color:#22c55e;
 }
 
 button{
-    margin-top:10px;
-    padding:12px 18px;
-    border:none;
-    border-radius:8px;
     background:#2563eb;
     color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
     cursor:pointer;
     font-size:16px;
 }
@@ -71,30 +68,38 @@ button:hover{
     background:#1d4ed8;
 }
 
+a{
+    color:#60a5fa;
+    text-decoration:none;
+}
+
 footer{
     text-align:center;
-    padding:20px;
-    color:#aaa;
+    color:#94a3b8;
+    padding:30px;
 }
 </style>
 
 <script>
 function copyCode(){
-navigator.clipboard.writeText(`local Library = loadstring(game:HttpGet("COLOQUE_SEU_LINK_AQUI"))()
+const code=`local Library = loadstring(game:HttpGet("COLOQUE_O_LINK_DA_LIBRARY_AQUI"))()
 
 local Window = Library:CreateWindow({
     Name = "Meu Hub"
-})`);
+})`;
+
+navigator.clipboard.writeText(code);
 alert("Código copiado!");
 }
 </script>
 
 </head>
+
 <body>
 
 <header>
 <h1>Toddyz Library</h1>
-<p>Create beautiful Roblox interfaces easily.</p>
+<p>Create Roblox interfaces easily.</p>
 </header>
 
 <div class="container">
@@ -102,60 +107,36 @@ alert("Código copiado!");
 <div class="card">
 <h2>Installation</h2>
 
-<p>Copy the code below into your Roblox script.</p>
+<p>Use the following code:</p>
 
-<code>
-local Library = loadstring(game:HttpGet("COLOQUE_SEU_LINK_AQUI"))()
+<pre>local Library = loadstring(game:HttpGet("COLOQUE_O_LINK_DA_LIBRARY_AQUI"))()
 
 local Window = Library:CreateWindow({
     Name = "Meu Hub"
-})
-</code>
+})</pre>
 
 <button onclick="copyCode()">Copy Code</button>
 
 </div>
 
 <div class="card">
-<h2>Documentation</h2>
 
-<p>Use the Library object to create windows, tabs, buttons, toggles, sliders and more.</p>
+<h2>Example</h2>
 
-<p>Example:</p>
-
-<code>
-local Tab = Window:CreateTab("Main")
+<pre>local Tab = Window:CreateTab("Main")
 
 Tab:CreateButton({
     Name = "Hello",
     Callback = function()
         print("Hello World!")
     end
-})
-</code>
+})</pre>
 
 </div>
 
 <div class="card">
+
 <h2>License</h2>
 
-<p>This project is protected by its license.</p>
-
 <p>
-<a href="license.html">
-View License
-</a>
-</p>
-
-</div>
-
-</div>
-
-<footer>
-
-© 2026 Toddyz Library
-
-</footer>
-
-</body>
-</html>
+<a href="license.html">View License</
