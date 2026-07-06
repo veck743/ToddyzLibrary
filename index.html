@@ -6,90 +6,119 @@
 <title>Toddyz Library</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#0f172a;
-    color:white;
+background:#0d1117;
+color:white;
 }
 
 header{
-    background:#2563eb;
-    padding:40px;
-    text-align:center;
+background:linear-gradient(90deg,#2563eb,#1d4ed8);
+padding:60px;
+text-align:center;
 }
 
 header h1{
-    margin:0;
-    font-size:42px;
+font-size:48px;
 }
 
 header p{
-    margin-top:10px;
-    color:#dbeafe;
+margin-top:10px;
+color:#c9d1d9;
+font-size:18px;
 }
 
 .container{
-    max-width:900px;
-    margin:auto;
-    padding:30px;
+max-width:1000px;
+margin:auto;
+padding:30px;
 }
 
 .card{
-    background:#1e293b;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:20px;
+background:#161b22;
+border:1px solid #30363d;
+border-radius:12px;
+padding:25px;
+margin-bottom:25px;
 }
 
 h2{
-    color:#60a5fa;
+color:#58a6ff;
+margin-bottom:15px;
 }
 
 pre{
-    background:#020617;
-    padding:15px;
-    border-radius:8px;
-    overflow:auto;
-    color:#22c55e;
+background:#010409;
+padding:15px;
+border-radius:10px;
+overflow:auto;
+color:#3fb950;
 }
 
 button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:12px 18px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:16px;
+margin-top:15px;
+padding:12px 18px;
+background:#238636;
+border:none;
+border-radius:8px;
+color:white;
+font-size:15px;
+cursor:pointer;
 }
 
 button:hover{
-    background:#1d4ed8;
+background:#2ea043;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-top:15px;
+}
+
+.item{
+background:#21262d;
+padding:15px;
+border-radius:10px;
+text-align:center;
+}
+
+.item h3{
+color:#58a6ff;
+margin-bottom:8px;
 }
 
 a{
-    color:#60a5fa;
-    text-decoration:none;
+color:#58a6ff;
+text-decoration:none;
 }
 
 footer{
-    text-align:center;
-    color:#94a3b8;
-    padding:30px;
+text-align:center;
+padding:30px;
+color:#8b949e;
 }
 </style>
 
 <script>
 function copyCode(){
-const code=`local Library = loadstring(game:HttpGet("COLOQUE_O_LINK_DA_LIBRARY_AQUI"))()
+
+const code=`local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua"))()
 
 local Window = Library:CreateWindow({
-    Name = "Meu Hub"
+    Name = "Toddyz Hub"
 })`;
 
 navigator.clipboard.writeText(code);
-alert("Código copiado!");
+
+alert("Loadstring copiada!");
 }
 </script>
 
@@ -98,30 +127,36 @@ alert("Código copiado!");
 <body>
 
 <header>
+
 <h1>Toddyz Library</h1>
-<p>Create Roblox interfaces easily.</p>
+
+<p>A Modern Roblox UI Library by Toddyz</p>
+
 </header>
 
 <div class="container">
 
 <div class="card">
-<h2>Installation</h2>
 
-<p>Use the following code:</p>
+<h2>📦 Installation</h2>
 
-<pre>local Library = loadstring(game:HttpGet("COLOQUE_O_LINK_DA_LIBRARY_AQUI"))()
+<p>Copy the code below and paste it into your script.</p>
+
+<br>
+
+<pre>local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua"))()
 
 local Window = Library:CreateWindow({
-    Name = "Meu Hub"
+    Name = "Toddyz Hub"
 })</pre>
 
-<button onclick="copyCode()">Copy Code</button>
+<button onclick="copyCode()">Copy Loadstring</button>
 
 </div>
 
 <div class="card">
 
-<h2>Example</h2>
+<h2>🚀 Quick Start</h2>
 
 <pre>local Tab = Window:CreateTab("Main")
 
@@ -136,7 +171,74 @@ Tab:CreateButton({
 
 <div class="card">
 
-<h2>License</h2>
+<h2>✨ Components</h2>
 
-<p>
-<a href="license.html">View License</
+<div class="grid">
+
+<div class="item">
+<h3>Window</h3>
+Create windows
+</div>
+
+<div class="item">
+<h3>Tab</h3>
+Create tabs
+</div>
+
+<div class="item">
+<h3>Button</h3>
+Create buttons
+</div>
+
+<div class="item">
+<h3>Toggle</h3>
+On / Off controls
+</div>
+
+<div class="item">
+<h3>Slider</h3>
+Numeric values
+</div>
+
+<div class="item">
+<h3>Textbox</h3>
+Text input
+</div>
+
+<div class="item">
+<h3>Dropdown</h3>
+Option lists
+</div>
+
+<div class="item">
+<h3>Notification</h3>
+Popup notifications
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>📜 License</h2>
+
+<p>This project is protected by its license.</p>
+
+<br>
+
+<a href="license.html">View License</a>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Toddyz Library<br>
+Made by Toddyz
+
+</footer>
+
+</body>
+</html>
