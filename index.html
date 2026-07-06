@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Toddyz Library</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -20,24 +22,24 @@ color:white;
 
 header{
 background:linear-gradient(90deg,#2563eb,#1d4ed8);
-padding:60px;
+padding:60px 20px;
 text-align:center;
 }
 
 header h1{
-font-size:48px;
+font-size:50px;
 }
 
 header p{
 margin-top:10px;
-color:#c9d1d9;
 font-size:18px;
+color:#d0d7de;
 }
 
 .container{
 max-width:1000px;
 margin:auto;
-padding:30px;
+padding:25px;
 }
 
 .card{
@@ -48,7 +50,7 @@ padding:25px;
 margin-bottom:25px;
 }
 
-h2{
+.card h2{
 color:#58a6ff;
 margin-bottom:15px;
 }
@@ -56,19 +58,19 @@ margin-bottom:15px;
 pre{
 background:#010409;
 padding:15px;
-border-radius:10px;
+border-radius:8px;
 overflow:auto;
 color:#3fb950;
 }
 
 button{
 margin-top:15px;
-padding:12px 18px;
+padding:12px 20px;
 background:#238636;
 border:none;
 border-radius:8px;
+font-size:16px;
 color:white;
-font-size:15px;
 cursor:pointer;
 }
 
@@ -80,19 +82,18 @@ background:#2ea043;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:15px;
-margin-top:15px;
 }
 
 .item{
 background:#21262d;
-padding:15px;
+padding:20px;
 border-radius:10px;
 text-align:center;
 }
 
 .item h3{
+margin-bottom:10px;
 color:#58a6ff;
-margin-bottom:8px;
 }
 
 a{
@@ -101,25 +102,27 @@ text-decoration:none;
 }
 
 footer{
-text-align:center;
 padding:30px;
+text-align:center;
 color:#8b949e;
 }
+
 </style>
 
 <script>
-function copyCode(){
 
-const code=`local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua"))()
+function copiar(){
+
+navigator.clipboard.writeText(`local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua"))()
 
 local Window = Library:CreateWindow({
-    Name = "Toddyz Hub"
-})`;
+    Name = "Meu Hub"
+})`);
 
-navigator.clipboard.writeText(code);
+alert("Código copiado!");
 
-alert("Loadstring copiada!");
 }
+
 </script>
 
 </head>
@@ -130,7 +133,7 @@ alert("Loadstring copiada!");
 
 <h1>Toddyz Library</h1>
 
-<p>A Modern Roblox UI Library by Toddyz</p>
+<p>Uma biblioteca simples, rápida e moderna para criar interfaces no Roblox.</p>
 
 </header>
 
@@ -138,32 +141,50 @@ alert("Loadstring copiada!");
 
 <div class="card">
 
-<h2>📦 Installation</h2>
+<h2>📦 Instalação</h2>
 
-<p>Copy the code below and paste it into your script.</p>
+<p>Copie o código abaixo para começar.</p>
 
 <br>
 
 <pre>local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua"))()
 
 local Window = Library:CreateWindow({
-    Name = "Toddyz Hub"
+    Name = "Meu Hub"
 })</pre>
 
-<button onclick="copyCode()">Copy Loadstring</button>
+<button onclick="copiar()">📋 Copiar Código</button>
 
 </div>
 
 <div class="card">
 
-<h2>🚀 Quick Start</h2>
+<h2>🚀 Exemplo</h2>
 
-<pre>local Tab = Window:CreateTab("Main")
+<pre>local Main = Window:CreateTab("Principal")
 
-Tab:CreateButton({
-    Name = "Hello",
+Main:Button({
+    Text = "Olá",
     Callback = function()
-        print("Hello World!")
+
+        print("Olá Mundo!")
+
+    end
+})
+
+Main:Toggle({
+    Text = "Auto Farm",
+    Default = false,
+    Callback = function(Value)
+
+    end
+})
+
+Main:Input({
+    Text = "Nome",
+    Placeholder = "Digite aqui...",
+    Callback = function(Text)
+
     end
 })</pre>
 
@@ -171,48 +192,23 @@ Tab:CreateButton({
 
 <div class="card">
 
-<h2>✨ Components</h2>
+<h2>✨ Componentes</h2>
 
 <div class="grid">
 
 <div class="item">
-<h3>Window</h3>
-Create windows
+<h3>🔘 Button</h3>
+Cria um botão clicável.
 </div>
 
 <div class="item">
-<h3>Tab</h3>
-Create tabs
+<h3>✅ Toggle</h3>
+Cria um botão de ligar e desligar.
 </div>
 
 <div class="item">
-<h3>Button</h3>
-Create buttons
-</div>
-
-<div class="item">
-<h3>Toggle</h3>
-On / Off controls
-</div>
-
-<div class="item">
-<h3>Slider</h3>
-Numeric values
-</div>
-
-<div class="item">
-<h3>Textbox</h3>
-Text input
-</div>
-
-<div class="item">
-<h3>Dropdown</h3>
-Option lists
-</div>
-
-<div class="item">
-<h3>Notification</h3>
-Popup notifications
+<h3>⌨️ Input</h3>
+Permite ao usuário digitar um texto.
 </div>
 
 </div>
@@ -221,13 +217,13 @@ Popup notifications
 
 <div class="card">
 
-<h2>📜 License</h2>
+<h2>📜 Licença</h2>
 
-<p>This project is protected by its license.</p>
+<p>Esta biblioteca é protegida por uma licença.</p>
 
 <br>
 
-<a href="license.html">View License</a>
+<a href="license.html">Ver Licença</a>
 
 </div>
 
@@ -236,7 +232,7 @@ Popup notifications
 <footer>
 
 © 2026 Toddyz Library<br>
-Made by Toddyz
+Desenvolvido por Toddyz
 
 </footer>
 
