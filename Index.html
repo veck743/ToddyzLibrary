@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toddyz Library</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#111827;
+    color:white;
+}
+
+header{
+    background:#2563eb;
+    padding:40px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    font-size:42px;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:#1f2937;
+    border-radius:12px;
+    padding:20px;
+    margin-bottom:25px;
+}
+
+h2{
+    color:#60a5fa;
+}
+
+code{
+    display:block;
+    background:#0f172a;
+    color:#22c55e;
+    padding:15px;
+    border-radius:8px;
+    overflow:auto;
+    margin-top:10px;
+}
+
+a{
+    color:#60a5fa;
+    text-decoration:none;
+}
+
+button{
+    margin-top:10px;
+    padding:12px 18px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#aaa;
+}
+</style>
+
+<script>
+function copyCode(){
+navigator.clipboard.writeText(`local Library = loadstring(game:HttpGet("COLOQUE_SEU_LINK_AQUI"))()
+
+local Window = Library:CreateWindow({
+    Name = "Meu Hub"
+})`);
+alert("Código copiado!");
+}
+</script>
+
+</head>
+<body>
+
+<header>
+<h1>Toddyz Library</h1>
+<p>Create beautiful Roblox interfaces easily.</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Installation</h2>
+
+<p>Copy the code below into your Roblox script.</p>
+
+<code>
+local Library = loadstring(game:HttpGet("COLOQUE_SEU_LINK_AQUI"))()
+
+local Window = Library:CreateWindow({
+    Name = "Meu Hub"
+})
+</code>
+
+<button onclick="copyCode()">Copy Code</button>
+
+</div>
+
+<div class="card">
+<h2>Documentation</h2>
+
+<p>Use the Library object to create windows, tabs, buttons,
