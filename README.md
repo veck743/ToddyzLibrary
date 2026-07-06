@@ -1,8 +1,8 @@
-# ToddyzLibrary
+# ToddyzLibrary 🇧🇷
 
-Lib de UI leve e direta. O foco aqui é ter algo funcional, com animações suaves e sem pesar no script.
+Library feita pra você usar pro seu jogo, usável para comandos e outras coisas. feito por um Brasileiro
 
-## Como usar
+## Como usar ❓
 
 ```lua
 local ToddyzLibrary = loadstring(game:HttpGet("[https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua](https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua)"))()
