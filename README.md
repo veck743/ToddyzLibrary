@@ -1,10 +1,8 @@
-# ToddyzLibrary 🇧🇷
+# ToddyzLibrary
 
-Uma lib de UI simples que fiz pra agilizar a criação de menus no Roblox. O foco aqui é ter algo funcional e sem enrolação.
+Lib de UI leve e direta. O foco aqui é ter algo funcional, com animações suaves e sem pesar no script.
 
 ## Como usar
-
-Só jogar esse `loadstring` no topo do seu script:
 
 ```lua
 local ToddyzLibrary = loadstring(game:HttpGet("[https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua](https://raw.githubusercontent.com/veck743/ToddyzLibrary/main/Library.lua)"))()
@@ -12,6 +10,12 @@ local ToddyzLibrary = loadstring(game:HttpGet("[https://raw.githubusercontent.co
 local Menu = ToddyzLibrary:CreateWindow("Seu Título")
 local Tab = Menu:CreateTab("Início")
 
-Tab:CreateButton("Botão", function()
-    print("Funcionou!")
+-- Botão padrão
+Tab:CreateButton("Executar", function()
+    print("Botão clicado!")
+end)
+
+-- Toggle (ON/OFF)
+Tab:CreateToggle("Modo Ativo", function(estado)
+    print("Estado atual: " .. tostring(estado))
 end)
