@@ -2,7 +2,7 @@
 
 Salve! Criei essa Library pra quem quer fazer uma UI rápida e sem dor de cabeça no Roblox. Ela é bem leve, simples e serve pra qualquer script que você precisar.
 
-## Como usa ❓
+## Mecânicas 🔧
 
 Pra usar não tem segredo, é só copiar esse `loadstring` e jogar no topo do seu script:
 
