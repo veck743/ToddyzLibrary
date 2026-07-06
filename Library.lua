@@ -17,6 +17,54 @@ local function applyHoverAnimation(guiObject)
 	guiObject.MouseLeave:Connect(function() TweenService:Create(guiObject, tweenInfo, {Size = originalSize}):Play() end)
 end
 
+-- ==========================================
+-- SISTEMA DE NOTIFICAÇÃO (NOTIFY)
+-- ==========================================
+function ToddyzLibrary:Notify(text, duration)
+	duration = duration or 3
+	
+	local notifyGui = PlayerGui:FindFirstChild("TODDYZ_NOTIFY_UI")
+	if not notifyGui then
+		notifyGui = Instance.new("ScreenGui")
+		notifyGui.Name = "TODDYZ_NOTIFY_UI"
+		notifyGui.Parent = PlayerGui
+	end
+
+	local NotifFrame = Instance.new("Frame")
+	NotifFrame.Size = UDim2.new(0, 250, 0, 60)
+	-- Começa escondido fora da tela (lado direito)
+	NotifFrame.Position = UDim2.new(1, 10, 1, -80) 
+	NotifFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+	NotifFrame.BorderSizePixel = 0
+	NotifFrame.Parent = notifyGui
+	Instance.new("UICorner", NotifFrame).CornerRadius = UDim.new(0, 8)
+
+	local NotifText = Instance.new("TextLabel")
+	NotifText.Size = UDim2.new(1, -20, 1, 0)
+	NotifText.Position = UDim2.new(0, 10, 0, 0)
+	NotifText.BackgroundTransparency = 1
+	NotifText.Text = text
+	NotifText.TextColor3 = Color3.new(1,1,1)
+	NotifText.Font = Enum.Font.GothamBold
+	NotifText.TextSize = 14
+	NotifText.TextWrapped = true
+	NotifText.Parent = NotifFrame
+
+	-- Animação entrando na tela
+	TweenService:Create(NotifFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(1, -260, 1, -80)}):Play()
+
+	-- Espera o tempo e faz a animação saindo
+	task.delay(duration, function()
+		local tweenOut = TweenService:Create(NotifFrame, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(1, 10, 1, -80)})
+		tweenOut:Play()
+		tweenOut.Completed:Wait()
+		NotifFrame:Destroy()
+	end)
+end
+
+-- ==========================================
+-- SISTEMA DE JANELA E TABS
+-- ==========================================
 function ToddyzLibrary:CreateWindow(titleText)
 	local Window = {}
 	
@@ -56,7 +104,6 @@ function ToddyzLibrary:CreateWindow(titleText)
 	Title.Size = UDim2.new(1, -50, 1, 0)
 	Title.Position = UDim2.new(0, 10, 0, 0)
 	Title.BackgroundTransparency = 1
-	-- Título padrão atualizado:
 	Title.Text = titleText or "Toddyz library"
 	Title.TextColor3 = Color3.new(1,1,1)
 	Title.Font = Enum.Font.GothamBold
@@ -75,7 +122,7 @@ function ToddyzLibrary:CreateWindow(titleText)
 	Minimize.Parent = TopBar
 	Instance.new("UICorner", Minimize).CornerRadius = UDim.new(0, 8)
 
-	-- Sistema de arrastar (Dragging)
+	-- Sistema de arrastar (Dragging) com suporte a mobile (Touch)
 	local dragging, dragInput, dragStart, startPos
 	TopBar.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
@@ -184,6 +231,19 @@ function ToddyzLibrary:CreateWindow(titleText)
 
 		firstTab = false
 
+		-- COMPONENTE: LABEL
+		function Tab:CreateLabel(text)
+			local Label = Instance.new("TextLabel")
+			Label.Size = UDim2.new(1, -10, 0, 20)
+			Label.BackgroundTransparency = 1
+			Label.Text = text
+			Label.TextColor3 = Color3.new(1,1,1)
+			Label.Font = Enum.Font.Gotham
+			Label.TextSize = 14
+			Label.Parent = Page
+		end
+
+		-- COMPONENTE: BUTTON
 		function Tab:CreateButton(text, callback)
 			local Button = Instance.new("TextButton")
 			Button.Size = UDim2.new(1, -10, 0, 35)
@@ -200,6 +260,7 @@ function ToddyzLibrary:CreateWindow(titleText)
 			end)
 		end
 
+		-- COMPONENTE: TOGGLE
 		function Tab:CreateToggle(text, callback)
 			local ToggleBtn = Instance.new("TextButton")
 			ToggleBtn.Size = UDim2.new(1, -10, 0, 35)
@@ -221,6 +282,7 @@ function ToddyzLibrary:CreateWindow(titleText)
 			end)
 		end
 
+		-- COMPONENTE: INPUT
 		function Tab:CreateInput(placeholder, callback)
 			local InputBox = Instance.new("TextBox")
 			InputBox.Size = UDim2.new(1, -10, 0, 35)
